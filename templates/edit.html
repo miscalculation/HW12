@@ -1,0 +1,16 @@
+
+<h3> Edit Message</h3>
+
+{% for e in entries %}
+
+{% if id|string in e['id']|string %}
+<form action="/postedit" method="POST">
+    <p>Your new message: </p>
+    <p><textarea name="message" rows=10 cols=60>{{e['text']}}</textarea></p>
+    <p><input type="submit" value="Submit"/></p>
+    <p><input type="hidden" name="id" value= {{id}}></p>
+</form>
+{% endif %}
+
+{% endfor %}
+
