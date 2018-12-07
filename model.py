@@ -46,7 +46,7 @@ def add_entry(name, text):
 def delete_entry(id):
     global entries, GUESTBOOK_ENTRIES_FILE, next_id
 
-    new_entries = [element for element in entries if element.get('id', '') != str(id)]
+    new_entries = [element for element in entries if element.get('id', '') != GUESTBOOK_ENTRIES_FILE(id)]
     entries = new_entries
     
     try:
