@@ -29,7 +29,20 @@ def admin():
 def deleteentry():
     i = request.form["id"]
     model.delete_entry(i)
-    return redirect("/admin")
+    return redirect("/")
+
+@app.route("/edit", methods=["POST"])
+def editentry():
+    i = request.form["id"]
+    return render_template("edit.html", id=i, entries=model.get_entries() )
+    
+@app.route("/postedit", methods=["POST"])
+def postedit():
+    i = request.form["id"]
+    message = request.form["message"]
+    model.post_edit(i, message)
+    return redirect("/")
+    
 
 if __name__=="__main__":
     model.init()
